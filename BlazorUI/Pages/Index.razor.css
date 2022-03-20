@@ -1,0 +1,59 @@
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+
+}
+
+.top_div {
+    align-items: flex-end;
+}
+
+.whiteButton {
+    color: #0a58ca;
+    background-color: white;
+    border-color: #0a58ca;
+}
+
+.blueButton {
+    color: white;
+    background-color: #0a58ca;
+}
+
+.whiteButton:hover {
+    background-color: #0a58ca;
+    color: white;
+    transition: .4s
+}
+
+.whiteButton:active {
+    background-color: #0a58ca;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.blueButton:hover {
+    color: #0a58ca;
+    background-color: white;
+    border-color: #0a58ca;
+    transition: .4s
+}
+
+.blueButton:active {
+    color: #0a58ca;
+    background-color: white;
+    border-color: #0a58ca;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+#buttonsDiv{
+    float: right;
+}
