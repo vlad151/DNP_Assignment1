@@ -1,0 +1,26 @@
+﻿@page "/Signup"
+
+
+<div class="card">
+    <div class="field">
+        <label>username:</label>
+        <input type="text"/>
+    </div>
+    <div class="field">
+        <label style="text-align: center">password:</label>
+        <input type="password"/>
+    </div>
+    <div class="field">
+        <label style="text-align: center">repeat password:</label>
+        <input type="password"/>
+    </div>
+    <div class="field">
+        <button class="signUp" >Sign Up</button>
+    </div>
+</div>
+
+@code {
+    private string username;
+    private string password;
+    private string errorLabel;
+}

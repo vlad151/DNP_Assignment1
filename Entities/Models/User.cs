@@ -2,12 +2,12 @@
 
 public class User
 {
-    public User(string userName, string password)
+    public User(string username, string password)
     {
-        UserName = userName;
-        Password = password;
+        this.username = username;
+        this.password = password;
     }
 
-    public string UserName { get; set; }
-    public string Password { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
 }
