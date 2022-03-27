@@ -5,10 +5,13 @@ public class Vote
     public short Value{ get; set; }
     public User Voter { get; set; }
 
-    public Vote(short value)
+    public Vote(short value, User voter)
     {
-        this.Value = value;
+        Value = value;
+        Voter = voter;
     }
+
+
 
     private void Validate(short value)
     {

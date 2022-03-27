@@ -23,14 +23,30 @@ public class PostService: IPostServices
         return await postRepo.GetAllPostsAsync();
     }
 
-    public async Task<Post> GetPostAsync(int Id)
+    public async Task<Post> GetPostAsync(string Id)
     {
         return await postRepo.GetPostAsync(Id);
     }
 
-    public async Task<Post> AddComment(int Id, Comment comment)
+    public async Task<Post> AddComment(string Id, Comment comment)
     {
         postRepo.AddComment(Id, comment);
         return await postRepo.GetPostAsync(Id);
+    }
+
+    public  void Upvote(string Id, Vote vote)
+    {
+        postRepo.Upvote(Id, vote);
+        
+    }
+
+    public void Downvote(string Id, Vote vote)
+    {
+        postRepo.Downvote(Id, vote);
+    }
+
+    public void Comment(string postId, Comment comment)
+    {
+        postRepo.Comment(postId,comment);
     }
 };

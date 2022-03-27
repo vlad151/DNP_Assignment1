@@ -3,7 +3,7 @@
 @inject IAuthService authService
 @inject NavigationManager navMgr
 
-
+<!--
 <AuthorizeView>
     <NotAuthorized>
         <div class="card">
@@ -34,7 +34,14 @@
             <h3>Hello, @context.User.Identity.Name</h3>
         </div>
     </Authorized>
-</AuthorizeView>
+</AuthorizeView> 
+-->
+
+ <RadzenCard class="m-3 ml-5 mr-5">
+     <h5 >Login</h5>
+     <RadzenTextBox  Class="w-100" />
+     <RadzenTextBox  Class="w-100" />
+            </RadzenCard>
 @code {
     private string username;
     private string password;

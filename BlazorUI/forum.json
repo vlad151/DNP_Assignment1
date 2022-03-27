@@ -3,51 +3,93 @@
     {
       "username": "vlad",
       "password": "vlad"
+    },
+    {
+      "username": "chris",
+      "password": "chris"
     }
   ],
   "Posts": [
     {
-      "Id": "1",
-      "Header": "asdasd",
-      "Body": "asdasd",
-      "Votes": null,
-      "Comments": null,
-      "WrittenBy": {
-        "username": "joe",
-        "password": "mama"
-      }
-    },
-    {
-      "Id": "1",
-      "Header": "gwgwe",
-      "Body": "dsfgwsdfg",
-      "Votes": null,
-      "Comments": null,
-      "WrittenBy": {
-        "username": "joe",
-        "password": "mama"
-      }
-    },
-    {
-      "Id": "1",
-      "Header": "Chris is a piece of shit",
-      "Body": "somethin cool",
-      "Votes": null,
-      "Comments": null,
-      "WrittenBy": {
-        "username": "joe",
-        "password": "mama"
-      }
-    },
-    {
-      "Id": "1",
-      "Header": "some fucking title",
-      "Body": "some fucking description",
-      "Votes": null,
-      "Comments": null,
+      "Id": "1648406635",
+      "Header": "some title",
+      "Body": "some weird description",
+      "Votes": [
+        {
+          "Value": 1,
+          "Voter": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "drhdfsghd",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        },
+        {
+          "Body": "drhdfsghd",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        },
+        {
+          "Body": "drhdfsghd",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        },
+        {
+          "Body": "drhdfsghd",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        }
+      ],
       "WrittenBy": {
         "username": "vlad",
         "password": "vlad"
+      }
+    },
+    {
+      "Id": "1648406810",
+      "Header": "I like to drive my car",
+      "Body": "bmw is the best",
+      "Votes": [
+        {
+          "Value": -1,
+          "Voter": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "you are stupid",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        },
+        {
+          "Body": "you are stupid",
+          "WrittenBy": {
+            "username": "vlad",
+            "password": "vlad"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "chris",
+        "password": "chris"
       }
     }
   ]

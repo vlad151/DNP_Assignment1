@@ -30,11 +30,12 @@
     public Task<AuthenticationState> AuthState { get; set; } = null!;
 
     private ClaimsPrincipal? user;
-
+    
     protected override async Task OnInitializedAsync()
     {
         AuthenticationState authState = await AuthState;
         user = authState.User;
+        
     }
     private string title;
     private string body;
@@ -45,19 +46,20 @@
     }
 
     private async void SubmitButtonClicked()
-    { 
-        Console.WriteLine(body);
-        try
-        {
-            User? currentUser = await userService.GetUserAsync(user?.Identity?.Name);  
-            await postService.CreatePost(new Post("1", title,body, null, null, currentUser));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        navMgr.NavigateTo("/");
+    {
+   
+            try
+            {
+                User? currentUser = await userService.GetUserAsync(user?.Identity?.Name);
+                await postService.CreatePost(new Post( title, body, currentUser));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            navMgr.NavigateTo("/");
+      
     }
 
 }

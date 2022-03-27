@@ -9,14 +9,45 @@ public class Post
     public ICollection<Comment> Comments { get; set; }
     public User WrittenBy { get; set; }
 
-    public Post(string id, string header, string body, ICollection<Vote> votes, ICollection<Comment> comments, User writtenBy)
+
+    public Post(string header, string body, User writtenBy)
     {
-        Id = id;
+        Id = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
         Header = header;
         Body = body;
-        Votes = votes;
-        Comments = comments;
         WrittenBy = writtenBy;
+
+        Votes = new List<Vote>();
+        Comments = new List<Comment>();
     }
-    
+
+    public short countVotes()
+    {
+        short total = 0;
+
+        if (Votes.Count != 0)
+        {
+            foreach (var vote in Votes)
+            {
+                total += vote.Value;
+            }
+
+            return total;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int countComments()
+    {
+        int total = 0;
+        foreach (var comment in Comments)
+        {
+            total += 1;
+        }
+
+        return total;
+    }
 }

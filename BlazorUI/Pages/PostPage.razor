@@ -1,19 +1,20 @@
-﻿@using Entities.Models
+﻿@page "/PostPage/{Id}"
+@using Entities.Models
 @using System.Security.Claims
 @using Contracts.Services
 @inject IUserService userService
 @inject IPostServices postService
-@inject NavigationManager navMgr 
-<div>
+@inject NavigationManager navMgr
 
+<NavBar/>
 
-    <RadzenCard class="m-3">
-        <h3 onclick=@(()=>ExpandPost(Post.Id))>@Post.Header</h3>
-        <h6 onclick=@(()=>ExpandPost(Post.Id)) style="color:gray">u/@Post.WrittenBy.username</h6>
-        <div class="row" onclick=@(()=>ExpandPost(Post.Id))>
-            <p>@Post.Body</p>
-        </div>
-        <div style="display: flex">
+<RadzenCard class="m-3">
+    <h3 >@Post.Header</h3>
+    <h6 >u/@Post.WrittenBy.username</h6>
+    <div >
+        <p>@Post.Body</p>
+    </div>
+    <div style="display: flex">
         <div class="upvoteComponent">
             <img src="img/upvote.png" onclick="@ToggleUpvote" style="display:@(IsUpvoted ? "none" : "block"); cursor: pointer" alt="">
             <img src="img/upvoteOrange.png" onclick="@ToggleUpvote" style="display:@(IsUpvoted ? "block" : "none"); cursor: pointer" alt="">
@@ -24,21 +25,33 @@
         <label style="color:red">
             @errorLabel
         </label>
-        <div class="mt-4 ml-4" onclick=@(()=>ExpandPost(Post.Id)) style="cursor: pointer">
+        <div class="mt-4 ml-4" style="cursor: pointer">
             <span>@Post.countComments()</span>
             <img src="img/comment.png" alt="">
         </div></div>
-    </RadzenCard>
-
+</RadzenCard>
+<div style="display: flex">
+<RadzenTextBox Placeholder="what do you think about this..." @bind-Value="commentBody"  Class="w-100 ml-3" />
+ <RadzenButton Class="ml-4 mr-3" Click="@CommentButtonClicked" Text="Comment" />
+</div>
+<div class="comments">
+    @foreach (Comment comment in Post.Comments)
+    {
+        <CommentComponent Comment="comment"/>
+    }
 </div>
 
 @code {
 
+    private string commentBody;
+    public Post Post;
+
     [Parameter]
-    public Post Post { get; set; }
+    public string Id { get; set; }
 
     [CascadingParameter]
     public Task<AuthenticationState> AuthState { get; set; } = null!;
+
 
     private ClaimsPrincipal? user;
 
@@ -47,6 +60,7 @@
         AuthenticationState authState = await AuthState;
         user = authState.User;
         isLoggedIn = user.Identity != null;
+        Post = await postService.GetPostAsync(Id);
     }
 
     private bool IsUpvoted { get; set; } = false;
@@ -110,9 +124,11 @@
         }
     }
 
-    public void ExpandPost(string Id)
+    private async void CommentButtonClicked()
     {
-        Console.WriteLine(Post.Id);
-        navMgr.NavigateTo($"PostPage/{Id}");
+        User? currentUser = await userService.GetUserAsync(user?.Identity?.Name);
+        postService.AddComment( Post.Id,new Comment(commentBody, currentUser));
     }
+
 }
+

@@ -1,0 +1,11 @@
+﻿@using Entities.Models
+
+<RadzenCard class="m-3">
+    <h6 style="color: gray">u/@Comment.WrittenBy.username</h6>
+    <p>@Comment.Body</p>
+</RadzenCard>
+
+@code {
+    [Parameter]
+    public Comment Comment { get; set; }
+}
