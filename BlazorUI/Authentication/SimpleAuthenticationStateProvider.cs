@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace Application.Authentication;
+namespace BlazorUI.Authentication;
 
 public class SimpleAuthenticationStateProvider :AuthenticationStateProvider
 {

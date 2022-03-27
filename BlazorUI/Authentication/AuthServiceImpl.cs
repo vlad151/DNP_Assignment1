@@ -5,7 +5,7 @@ using Contracts.Services;
 using Entities.Models;
 using Microsoft.JSInterop;
 
-namespace Application.Authentication;
+namespace BlazorUI.Authentication;
 
 public class AuthServiceImpl : IAuthService
 {

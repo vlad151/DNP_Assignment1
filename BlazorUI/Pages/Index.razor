@@ -1,17 +1,32 @@
+@inject IAuthService authService
+@inject NavigationManager navMgr
 @page "/"
+@using BlazorUI.Authentication
+@using Application.Repositories
+@using Entities.Models
+@inject IPostRepo postRepo
+<div>
+    <NavBar/>
+</div>
 
 
-
-<PageTitle>Index</PageTitle>
-
-<div class=" top_div">
-    <img src="img/reddit_logo.png" alt="reddit logo">
-    <div id="buttonsDiv">
-      <a href="/Login">  <button class="button  whiteButton">Log In</button></a> 
-       <a href="/Signup"><button class="button  blueButton">Sign Up</button></a>
-    </div>
+<div>
+    @foreach (Post post in posts)
+    {
+        <PostCard Post=post/>
+    }
 </div>
 
 @code{
+    public ICollection<Post> posts;
+    byte[] documentContent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await postRepo.GetAllPostsAsync();
+        await base.OnInitializedAsync();
+    }
+
+
 
 }

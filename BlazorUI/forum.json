@@ -1,0 +1,54 @@
+{
+  "Users": [
+    {
+      "username": "vlad",
+      "password": "vlad"
+    }
+  ],
+  "Posts": [
+    {
+      "Id": "1",
+      "Header": "asdasd",
+      "Body": "asdasd",
+      "Votes": null,
+      "Comments": null,
+      "WrittenBy": {
+        "username": "joe",
+        "password": "mama"
+      }
+    },
+    {
+      "Id": "1",
+      "Header": "gwgwe",
+      "Body": "dsfgwsdfg",
+      "Votes": null,
+      "Comments": null,
+      "WrittenBy": {
+        "username": "joe",
+        "password": "mama"
+      }
+    },
+    {
+      "Id": "1",
+      "Header": "Chris is a piece of shit",
+      "Body": "somethin cool",
+      "Votes": null,
+      "Comments": null,
+      "WrittenBy": {
+        "username": "joe",
+        "password": "mama"
+      }
+    },
+    {
+      "Id": "1",
+      "Header": "some fucking title",
+      "Body": "some fucking description",
+      "Votes": null,
+      "Comments": null,
+      "WrittenBy": {
+        "username": "vlad",
+        "password": "vlad"
+      }
+    }
+  ]
+}

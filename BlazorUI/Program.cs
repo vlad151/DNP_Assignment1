@@ -1,6 +1,10 @@
-using Application.Authentication;
+using Application.Repositories;
+using BlazorUI.Authentication;
 using Contracts.Services;
-using Contracts.Services.Impls;
+using Application.Services;
+using Entities.Models;
+using JsonDataAccess.Context;
+using JsonDataAccess.RepoImpls;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -10,10 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<JsonContext>();
 builder.Services.AddScoped<AuthenticationStateProvider, SimpleAuthenticationStateProvider>();
 builder.Services.AddScoped<IAuthService, AuthServiceImpl>();
-builder.Services.AddScoped<IUserService, InMemoryUserService>();
-
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepo, JsonUserRepo>();
+builder.Services.AddScoped<ISubForumRepo, JsonSubForumRepo>();
+builder.Services.AddScoped<ISubForumService, SubForumService>();
+builder.Services.AddScoped<IPostRepo, JsonPostRepo>();
+builder.Services.AddScoped<IPostServices, PostService>();
 
 var app = builder.Build();
 

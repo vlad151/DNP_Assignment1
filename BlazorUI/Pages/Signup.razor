@@ -1,26 +1,98 @@
 ﻿@page "/Signup"
+@using BlazorUI.Authentication
+@using Entities.Models
+@using JsonDataAccess.RepoImpls
+@using Application.Repositories
+@using Contracts.Services
+@inject IAuthService authService
+@inject NavigationManager navMgr
+@inject IUserRepo jsonUserRepo
+@inject IUserService userService
 
-
-<div class="card">
-    <div class="field">
-        <label>username:</label>
-        <input type="text"/>
-    </div>
-    <div class="field">
-        <label style="text-align: center">password:</label>
-        <input type="password"/>
-    </div>
-    <div class="field">
-        <label style="text-align: center">repeat password:</label>
-        <input type="password"/>
-    </div>
-    <div class="field">
-        <button class="signUp" >Sign Up</button>
-    </div>
-</div>
-
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 col-xl-8 main box">
+                    <RadzenTemplateForm Context="buttonCtx" Data="@user" Submit="@(async (User args) => { await Submit(args); })">
+                        <RadzenFieldset Text="Sign Up">
+                            <div class="row">
+                                <div class="col-md-4 align-items-center d-flex">
+                                    <RadzenLabel Text="User Name"></RadzenLabel>
+                                </div>
+                                <div class="col-md-8">
+                                    <RadzenTextBox style="width: 100%;" Name="User Name" @bind-value="user.username"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 align-items-center d-flex">
+                                    <RadzenLabel Text="Password"></RadzenLabel>
+                                </div>
+                                <div class="col-md-8">
+                                    <RadzenPassword Style="width: 100%" Name="Password" @bind-value="user.password"></RadzenPassword>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 align-items-center d-flex">
+                                    <RadzenLabel Text="Repeat Password"></RadzenLabel>
+                                </div>
+                                <div class="col-md-8">
+                                    <RadzenPassword Style="width: 100%" Name="RepeatPassword" @bind-value="rePassword"></RadzenPassword>
+                                </div>
+                            </div>
+                            <div>
+                                <RadzenButton ButtonType="ButtonType.Submit" Text="Confirm"></RadzenButton>
+                                <p></p>
+                            </div>
+                        </RadzenFieldset>
+                    </RadzenTemplateForm>
+                </div>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
 @code {
-    private string username;
-    private string password;
-    private string errorLabel;
+
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; } = null!;
+
+
+    /*string userName;
+    string password;
+    
+    Boolean loggedIn; 
+    
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await AuthState;
+        ClaimsPrincipal user = authState.User;
+        if (user.Identity == null) return;;
+        
+        userName = user.Identity!.Name!;
+        password = user.Claims.First(c => "pwd".Equals(c.Type)).Value;
+        rePassword = user.Claims.First(c => "pwd".Equals(c.Type)).Value;
+        
+        loggedIn = true;
+    }*/
+
+    readonly User user = new();
+    string rePassword = String.Empty;
+
+    async Task Submit(User arg)
+    {
+        try
+        {
+            await userService.AddUserAsync(arg);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        await authService.LoginAsync(arg.username, arg.password);
+        navMgr.NavigateTo("/");
+        
+    }
+
+
 }

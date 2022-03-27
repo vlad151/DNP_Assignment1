@@ -1,0 +1,63 @@
+﻿@page "/CreatePost"
+@using Contracts.Services
+@using Application.Repositories
+@using Application.Services
+@using Entities.Models
+@using System.Security.Claims
+@inject NavigationManager navMgr
+@inject IPostServices postService
+@inject IPostRepo jsonPostRepo
+@inject IUserService userService
+
+
+<NavBar></NavBar>
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-xl-4"></div>
+    <div class="col-md-6 col-lg-6 col-xl-4 mt-5">
+        <h3>Create a post in a subreddit of your choice</h3>
+        <h6>Try r/clubpenguin</h6>
+        <RadzenTextBox Placeholder="Community" Class="w-100"/>
+        <RadzenTextBox Placeholder="Title" @bind-Value="title" Class="w-100"/>
+        <RadzenTextArea Placeholder="Write something nice..." @bind-Value="body" Class="w-100"/>
+        <RadzenButton Text="Cancel" Click="@CancelButtonClicked" class="cancelButton"></RadzenButton>
+        <RadzenButton Text="Submit" Click="@SubmitButtonClicked"></RadzenButton>
+    </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; } = null!;
+
+    private ClaimsPrincipal? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await AuthState;
+        user = authState.User;
+    }
+    private string title;
+    private string body;
+
+    private void CancelButtonClicked()
+    {
+        navMgr.NavigateTo("/");
+    }
+
+    private async void SubmitButtonClicked()
+    { 
+        Console.WriteLine(body);
+        try
+        {
+            User? currentUser = await userService.GetUserAsync(user?.Identity?.Name);  
+            await postService.CreatePost(new Post("1", title,body, null, null, currentUser));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        navMgr.NavigateTo("/");
+    }
+
+}

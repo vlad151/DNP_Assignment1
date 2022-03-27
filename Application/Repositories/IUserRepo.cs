@@ -1,10 +1,12 @@
 ﻿using Entities.Models;
-namespace Contracts.Services;
 
-public interface IUserService
+namespace Application.Repositories;
+
+public interface IUserRepo
 {
     Task<ICollection<User>> GetAllUsersAsync();
-    public Task<User?> GetUserAsync(string username);
+    Task<User?> GetUserAsync(string username);
     Task<User> AddUserAsync(User user);
     Task Update(User user);
+    
 }

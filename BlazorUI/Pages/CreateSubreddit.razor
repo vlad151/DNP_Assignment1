@@ -1,0 +1,69 @@
+﻿@page "/CreateSubreddit"
+@using Contracts.Services
+@using Entities.Models
+@using BlazorUI.Authentication
+@using System.Security.Claims
+@using Application.Repositories
+@inject NavigationManager navMgr
+@inject ISubForumService subForumService
+@inject IAuthService authService;
+@inject IUserService userService;
+<NavBar></NavBar>
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-xl-4"></div>
+    <div class="col-md-6 col-lg-6 col-xl-4 mt-5">
+        <h3>Create a subreddit of your choice.</h3>
+        <h6>Write a good description and make up some neat rules. You're the boss</h6>
+    <RadzenTextBox Placeholder="Name of your subreddit" @bind-value="title"  Class="w-100" />
+    <RadzenTextArea Placeholder="What is the community about. Make up some rules as well..." @bind-value="description"  Class="w-100 h-50" />
+    <RadzenButton Text="Cancel" Click="@CancelButtonClicked" class="cancelButton"></RadzenButton>
+    <RadzenButton Text="Submit" Click="@SubmitButtonClicked"></RadzenButton>
+</div>
+</div>
+@code {
+
+  [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; }
+
+  
+    private User currentUser;
+    private IEnumerable<Claim> claims;
+    private ClaimsPrincipal user;
+  
+    protected override async Task OnInitializedAsync()
+    {
+        
+        AuthenticationState authState = await AuthState;
+        user = authState.User;
+        if(user.Identity==null)return;
+      claims = user.Claims;
+        Console.WriteLine(claims.First());
+       // string username = user.Claims.First(c => "Name".Equals(c.Type)).Value;
+        string username = "vlad";
+        currentUser= await userService.GetUserAsync(username);
+    }
+
+    private string title, description;
+    
+    private void CancelButtonClicked()
+    {
+        navMgr.NavigateTo("/");
+    }
+    
+    
+ private async void SubmitButtonClicked()
+    {
+
+        try
+        {
+            await subForumService.AddSubForumAsync(new SubForum(title, description, currentUser));
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        navMgr.NavigateTo("/");
+    }
+
+}

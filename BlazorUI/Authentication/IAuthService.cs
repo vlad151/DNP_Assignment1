@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Application.Authentication;
+namespace BlazorUI.Authentication;
 
 public interface IAuthService
 {

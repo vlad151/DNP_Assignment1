@@ -8,6 +8,10 @@ public class User
         this.password = password;
     }
 
+    public User()
+    {
+        
+    }
     public string username { get; set; }
     public string password { get; set; }
 }

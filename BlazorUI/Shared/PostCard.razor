@@ -1,0 +1,26 @@
+﻿@using Entities.Models
+
+<div>
+
+
+    <RadzenCard class="m-3">
+        <h3>@Post.Header</h3>
+        <h6>u/@Post.WrittenBy.username</h6>
+        <div class="row">
+            <p>@Post.Body</p>
+        </div>
+        <div class="upvoteComponent">
+            
+        </div>
+    </RadzenCard>
+
+</div>
+
+@code {
+    [Parameter]
+    public Post Post { get; set; }
+    
+    
+    protected override async Task OnInitializedAsync() {
+    }
+}

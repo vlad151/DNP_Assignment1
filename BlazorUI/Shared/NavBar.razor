@@ -1,0 +1,59 @@
+﻿@using BlazorUI.Authentication
+
+@inject NavigationManager navMgr
+@inject IAuthService authService
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="img/reddit_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Reddit
+    </a>
+    <div>
+        <AuthorizeView>
+            <NotAuthorized>
+
+                <RadzenButton Click="@LogInButtonClicked" Text="Log In"></RadzenButton>
+                <RadzenButton Click="@SignUpButtonClicked" Text="Sign Up"></RadzenButton>
+            </NotAuthorized>
+            <Authorized>
+                <RadzenButton Click="@CreatePostButtonClicked" Image="img/plus.png" Text="Create Post" ButtonStyle="ButtonStyle.Light"></RadzenButton>
+                <RadzenButton Click="@CreateCommunityButtonClicked" Image="img/community.png" Text="Create Community" ButtonStyle="ButtonStyle.Light"></RadzenButton>
+                <RadzenButton Click="@LogOutButtonClicked" Text="Log Out"></RadzenButton>
+
+            </Authorized>
+
+
+        </AuthorizeView>
+
+    </div>
+</nav>
+
+@code {
+
+    private async void LogOutButtonClicked()
+    {
+        await authService.LogoutAsync();
+        navMgr.NavigateTo("/");
+    }
+
+    private async void SignUpButtonClicked()
+    {
+        navMgr.NavigateTo("Signup");
+    }
+
+    private async void LogInButtonClicked()
+    {
+        navMgr.NavigateTo("/Login");
+    }
+
+    private void CreatePostButtonClicked()
+    {
+        navMgr.NavigateTo("/CreatePost");
+    }
+
+    private void CreateCommunityButtonClicked()
+    {
+        navMgr.NavigateTo("/CreateSubreddit");
+    }
+
+}
