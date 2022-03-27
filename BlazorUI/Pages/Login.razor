@@ -3,56 +3,43 @@
 @inject IAuthService authService
 @inject NavigationManager navMgr
 
-<!--
+
+
 <AuthorizeView>
     <NotAuthorized>
-        <div class="card">
-            <h3>Please login</h3>
-            <div class="field">
-                <label>User name:</label>
-                <input type="text" @bind="username"/>
-            </div>
-            <div class="field">
-                <label style="text-align: center">Password:</label>
-                <input type="password" @bind="password"/>
-            </div>
-            @if (!string.IsNullOrEmpty(errorLabel))
-            {
-                <div class="field">
-                    <label style="color: red">
-                        @errorLabel
-                    </label>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 col-xl-5 main box">
+                    <RadzenCard>
+                        <h2 class="mb-4">Please login</h2>
+                        <RadzenTemplateForm Context="buttonCtx" Data=@("SimpleLogin")>
+                            <RadzenLogin AllowRegister="false" AllowResetPassword="false" Login=@(OnLogin) />
+                            <p>@errorLabel</p>
+                        </RadzenTemplateForm>
+                    </RadzenCard>
                 </div>
-            }
-            <div class="field">
-                <button class="loginbtn" @onclick="LoginAsync">Log in</button>
             </div>
         </div>
+
     </NotAuthorized>
     <Authorized>
         <div class="card">
-            <h3>Hello, @context.User.Identity.Name</h3>
+            <h3>Hello, @context.User.Identity!.Name</h3>
         </div>
     </Authorized>
-</AuthorizeView> 
--->
+</AuthorizeView>
 
- <RadzenCard class="m-3 ml-5 mr-5">
-     <h5 >Login</h5>
-     <RadzenTextBox  Class="w-100" />
-     <RadzenTextBox  Class="w-100" />
-            </RadzenCard>
 @code {
     private string username;
     private string password;
     private string errorLabel;
 
-    private async Task LoginAsync()
+    private async Task OnLogin(LoginArgs args)
     {
         errorLabel = "";
         try
         {
-            await authService.LoginAsync(username, password);
+            await authService.LoginAsync(args.Username, args.Password);
             navMgr.NavigateTo("/");
         }
         catch (Exception e)

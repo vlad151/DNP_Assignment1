@@ -13,8 +13,5 @@ public class Vote
 
 
 
-    private void Validate(short value)
-    {
-        
-    }
+   
 }

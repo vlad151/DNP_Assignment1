@@ -1,95 +1,74 @@
 {
   "Users": [
     {
-      "username": "vlad",
-      "password": "vlad"
+      "username": "Vlad1234",
+      "password": "vlad1234"
     },
     {
-      "username": "chris",
-      "password": "chris"
+      "username": "Chris1234",
+      "password": "chris1234"
     }
   ],
   "Posts": [
     {
-      "Id": "1648406635",
-      "Header": "some title",
-      "Body": "some weird description",
+      "Id": "1648414119",
+      "Header": "Sample title for the recording",
+      "Body": "Some nice description for the viewers",
       "Votes": [
         {
           "Value": 1,
           "Voter": {
-            "username": "vlad",
-            "password": "vlad"
+            "username": "Vlad1234",
+            "password": "vlad1234"
           }
         }
       ],
       "Comments": [
         {
-          "Body": "drhdfsghd",
+          "Body": "waht a nice post u/Vlad1234",
           "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
-          }
-        },
-        {
-          "Body": "drhdfsghd",
-          "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
-          }
-        },
-        {
-          "Body": "drhdfsghd",
-          "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
-          }
-        },
-        {
-          "Body": "drhdfsghd",
-          "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
+            "username": "Vlad1234",
+            "password": "vlad1234"
           }
         }
       ],
       "WrittenBy": {
-        "username": "vlad",
-        "password": "vlad"
+        "username": "Vlad1234",
+        "password": "vlad1234"
       }
     },
     {
-      "Id": "1648406810",
-      "Header": "I like to drive my car",
-      "Body": "bmw is the best",
+      "Id": "1648414161",
+      "Header": "cars",
+      "Body": "something about cars",
       "Votes": [
         {
           "Value": -1,
           "Voter": {
-            "username": "vlad",
-            "password": "vlad"
+            "username": "Vlad1234",
+            "password": "vlad1234"
+          }
+        },
+        {
+          "Value": 1,
+          "Voter": {
+            "username": "Chris1234",
+            "password": "chris1234"
           }
         }
       ],
       "Comments": [
         {
-          "Body": "you are stupid",
+          "Body": "I don\u0027t like any car except bmw",
           "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
-          }
-        },
-        {
-          "Body": "you are stupid",
-          "WrittenBy": {
-            "username": "vlad",
-            "password": "vlad"
+            "username": "Chris1234",
+            "password": "chris1234"
           }
         }
       ],
       "WrittenBy": {
-        "username": "chris",
-        "password": "chris"
+        "username": "Vlad1234",
+        "password": "vlad1234"
       }
     }
   ]
