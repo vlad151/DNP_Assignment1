@@ -8,13 +8,12 @@ public interface IPostServices
     public Task<ICollection<Post>> GetAllPostsAsync();
     public Task<Post> GetPostAsync(string Id);
 
-    public Task<Post> AddComment(string Id, Comment comment);
+    public Task AddComment(string Id, Comment comment);
     
-    public void Upvote(string Id, Vote vote);
+    public void  Upvote(string Id, Vote vote);
 
-    public void Downvote(string Id, Vote vote);
-
-    public void Comment(string postId, Comment comment);
+    public void  Downvote(string Id, Vote vote);
+    
 
 
 }

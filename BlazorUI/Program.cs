@@ -8,6 +8,7 @@ using JsonDataAccess.RepoImpls;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
+using RestClient.PostClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddScoped<ISubForumRepo, JsonSubForumRepo>();
 builder.Services.AddScoped<ISubForumService, SubForumService>();
 builder.Services.AddScoped<IPostRepo, JsonPostRepo>();
 builder.Services.AddScoped<IPostServices, PostService>();
+builder.Services.AddScoped<IPostServices, PostHttpClient>();
 
 var app = builder.Build();
 

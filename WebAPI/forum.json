@@ -1,0 +1,253 @@
+{
+  "Users": [
+    {
+      "username": "string",
+      "password": "string"
+    }
+  ],
+  "Posts": [
+    {
+      "Id": "string",
+      "Header": "string",
+      "Body": "string",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "string",
+      "Body": "string",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "string",
+      "Body": "string",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "string",
+      "Body": "string",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "23",
+      "Header": "hdr",
+      "Body": "sbod",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "sdfg",
+      "Body": "sdfgsdfg",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "string",
+      "Body": "string",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "eyrt",
+      "Body": "eyg",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    },
+    {
+      "Id": "string",
+      "Header": "eyrt",
+      "Body": "eyg",
+      "Votes": [
+        {
+          "Value": 0,
+          "Voter": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "Comments": [
+        {
+          "Body": "string",
+          "WrittenBy": {
+            "username": "string",
+            "password": "string"
+          }
+        }
+      ],
+      "WrittenBy": {
+        "username": "string",
+        "password": "string"
+      }
+    }
+  ]
+}

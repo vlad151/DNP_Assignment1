@@ -28,10 +28,10 @@ public class PostService: IPostServices
         return await postRepo.GetPostAsync(Id);
     }
 
-    public async Task<Post> AddComment(string Id, Comment comment)
+    public async Task AddComment(string Id, Comment comment)
     {
         postRepo.AddComment(Id, comment);
-        return await postRepo.GetPostAsync(Id);
+        
     }
 
     public  void Upvote(string Id, Vote vote)
