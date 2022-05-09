@@ -1,6 +1,7 @@
 using Application.Repositories;
 using Application.Services;
 using Contracts.Services;
+using EFCDataAccess.DaoImpls;
 using JsonDataAccess.Context;
 using JsonDataAccess.RepoImpls;
 
@@ -13,9 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepo, JsonUserRepo>();
+builder.Services.AddScoped<IUserRepo, UserDaoImpl>();
 builder.Services.AddScoped<IPostServices, PostService>();
-builder.Services.AddScoped<IPostRepo, JsonPostRepo>();
+builder.Services.AddScoped<IPostRepo, PostDaoImpl>();
 builder.Services.AddScoped<JsonContext>();
 
 var app = builder.Build();
